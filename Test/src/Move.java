@@ -5,58 +5,61 @@ import java.util.List;
 // ID: C0892204.
 class Move {
 	/* *************************************** */
+
+	// class Item with itemName
 	static class Item {
 		protected String itemName;
 
+		// Item class constructor
 		public Item(String itemName) {
 			this.itemName = itemName;
 		}
-
+		// get method for ItemName
 		public String getItemName() {
 			return itemName;
 		}
 	}
-
+	// SingleObject class extending the Item class
 	static class SingleObject extends Item {
 		public SingleObject(String itemName) {
 			super(itemName);
 		}
 	}
-
+	// Box class extending Item class
 	static class Box extends Item {
 		private List<Item> items;
-
+		// Box class constructor
 		public Box(int capacity, int boxNumber) {
 			super("Box " + boxNumber);
 			this.items = new ArrayList<>(capacity);
 		}
-
+		// addItem method for adding item
 		public void addItem(Item item) {
 			items.add(item);
 		}
-
+		// getItems method to get the list of items
 		public List<Item> getItems() {
 			return items;
 		}
 	}
-
+	// list for boxes
 	private List<Box> boxes;
-
+	// Move class contructor
 	public Move() {
 		this.boxes = new ArrayList<>();
 	}
-
+	// addBox method to add box
 	public void addBox(Box box) {
 		boxes.add(box);
 	}
-
+	//print method for printing the content of the boxes
 	public void print() {
 		System.out.println("The objects of my move are:");
 		for (Box box : boxes) {
 			printContents(box);
 		}
 	}
-
+	// printContents Method for printing the content of the box
 	private void printContents(Box box) {
 		for (Item item : box.getItems()) {
 			if (item instanceof SingleObject) {
@@ -66,7 +69,7 @@ class Move {
 			}
 		}
 	}
-
+	// find method to find the number of the box with a itemName
 	public int find(String itemName) {
 		for (Box box : boxes) {
 			if (containsItemInBox(box, itemName)) {
@@ -75,7 +78,7 @@ class Move {
 		}
 		return -1;
 	}
-
+	// containsItemInBox method to check if a item with itemName is inside box
 	private boolean containsItemInBox(Box box, String itemName) {
 		for (Item item : box.getItems()) {
 			if (item instanceof SingleObject && ((SingleObject) item).getItemName().equals(itemName)) {
@@ -89,7 +92,7 @@ class Move {
 		return false;
 	}
 	/* *************************************** */
-
+ // main method
 	public static void main(String[] args) {
 		// We create a move that will hold 2 main boxes
 		Move move = new Move();
