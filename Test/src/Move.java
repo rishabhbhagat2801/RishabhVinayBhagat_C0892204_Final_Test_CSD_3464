@@ -49,6 +49,23 @@ class Move {
 	public void addBox(Box box) {
 		boxes.add(box);
 	}
+
+	public void print() {
+		System.out.println("The objects of my move are:");
+		for (Box box : boxes) {
+			printContents(box);
+		}
+	}
+	
+	private void printContents(Box box) {
+		for (Item item : box.getItems()) {
+			if (item instanceof SingleObject) {
+				System.out.println(((SingleObject) item).getItemName());
+			} else if (item instanceof Box) {
+				printContents((Box) item);
+			}
+		}
+	}
 	/* *************************************** */
 
 	public static void main(String[] args) {
