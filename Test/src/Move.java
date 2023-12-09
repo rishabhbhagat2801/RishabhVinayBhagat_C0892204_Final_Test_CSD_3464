@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 // Name: RISHABH VINAY BHAGAT.
 // ID: C0892204.
 class Move {
@@ -37,6 +40,15 @@ class Move {
 		}
 	}
 
+	private List<Box> boxes;
+
+	public Move() {
+		this.boxes = new ArrayList<>();
+	}
+
+	public void addBox(Box box) {
+		boxes.add(box);
+	}
 	/* *************************************** */
 
 	public static void main(String[] args) {
