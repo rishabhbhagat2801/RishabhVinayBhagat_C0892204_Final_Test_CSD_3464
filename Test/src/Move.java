@@ -76,12 +76,12 @@ class Move {
 		return -1;
 	}
 
-	private boolean findItemInBox(Box box, String itemName) {
+	private boolean containsItemInBox(Box box, String itemName) {
 		for (Item item : box.getItems()) {
 			if (item instanceof SingleObject && ((SingleObject) item).getItemName().equals(itemName)) {
 				return true;
 			} else if (item instanceof Box) {
-				if (findItemInBox((Box) item, itemName)) {
+				if (containsItemInBox((Box) item, itemName)) {
 					return true;
 				}
 			}
