@@ -2,7 +2,40 @@
 // ID: C0892204.
 class Move {
 	/* *************************************** */
-	// write your code here
+	static class Item {
+		protected String itemName;
+
+		public Item(String itemName) {
+			this.itemName = itemName;
+		}
+
+		public String getItemName() {
+			return itemName;
+		}
+	}
+
+	static class SingleObject extends Item {
+		public SingleObject(String itemName) {
+			super(itemName);
+		}
+	}
+
+	static class Box extends Item {
+		private List<Item> items;
+
+		public Box(String itemName) {
+			super(itemName);
+			this.items = new ArrayList<>();
+		}
+
+		public void addItem(Item item) {
+			items.add(item);
+		}
+
+		public List<Item> getItems() {
+			return items;
+		}
+	}
 
 	/* *************************************** */
 
