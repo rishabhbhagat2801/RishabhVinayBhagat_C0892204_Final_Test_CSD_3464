@@ -76,6 +76,18 @@ class Move {
 		return -1;
 	}
 
+	private boolean findItemInBox(Box box, String itemName) {
+		for (Item item : box.getItems()) {
+			if (item instanceof SingleObject && ((SingleObject) item).getItemName().equals(itemName)) {
+				return true;
+			} else if (item instanceof Box) {
+				if (findItemInBox((Box) item, itemName)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	/* *************************************** */
 
 	public static void main(String[] args) {
