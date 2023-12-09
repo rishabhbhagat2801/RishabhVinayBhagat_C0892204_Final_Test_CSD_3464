@@ -26,9 +26,9 @@ class Move {
 	static class Box extends Item {
 		private List<Item> items;
 
-		public Box(String itemName) {
-			super(itemName);
-			this.items = new ArrayList<>();
+		public Box(int capacity, int boxNumber) {
+			super("Box " + boxNumber);
+			this.items = new ArrayList<>(capacity);
 		}
 
 		public void addItem(Item item) {
@@ -69,8 +69,8 @@ class Move {
 
 	public int find(String itemName) {
 		for (Box box : boxes) {
-			if (findItemInBox(box, itemName)) {
-				return Integer.parseInt(box.getItemName());
+			if (containsItemInBox(box, itemName)) {
+				return Integer.parseInt(box.getItemName().substring(4));
 			}
 		}
 		return -1;
@@ -92,7 +92,7 @@ class Move {
 
 	public static void main(String[] args) {
 		// We create a move that will hold 2 main boxes
-		Move move = new Move(2);
+		Move move = new Move();
 
 		/*
 		 * We create and then fill 3 boxes
