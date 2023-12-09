@@ -56,7 +56,7 @@ class Move {
 			printContents(box);
 		}
 	}
-	
+
 	private void printContents(Box box) {
 		for (Item item : box.getItems()) {
 			if (item instanceof SingleObject) {
@@ -66,6 +66,16 @@ class Move {
 			}
 		}
 	}
+
+	public int find(String itemName) {
+		for (Box box : boxes) {
+			if (findItemInBox(box, itemName)) {
+				return Integer.parseInt(box.getItemName());
+			}
+		}
+		return -1;
+	}
+
 	/* *************************************** */
 
 	public static void main(String[] args) {
